@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Moviedom</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_movie">Movie</string>
+    <string name="title_favourite">Favourite</string>
+    <string name="search_movies">Search your movies</string>
+</resources>
