@@ -9,6 +9,7 @@ import coil.load
 import com.example.moviedom.data.MovieDetails
 
 import com.example.moviedom.databinding.FragmentMovieListBinding
+import com.example.moviedom.databinding.FragmentMovieListItemsBinding
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -21,7 +22,7 @@ class MovieRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentMovieListBinding.inflate(
+            FragmentMovieListItemsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -47,7 +48,7 @@ class MovieRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentMovieListBinding) :
+    inner class ViewHolder(binding: FragmentMovieListItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val movieTitle: TextView = binding.title
         val releaseYear: TextView = binding.release

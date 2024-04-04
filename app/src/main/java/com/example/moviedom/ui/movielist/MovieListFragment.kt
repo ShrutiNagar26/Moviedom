@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.moviedom.R
 import com.example.moviedom.data.MovieDetails
-import com.example.moviedom.databinding.FragmentMovieListListBinding
+import com.example.moviedom.databinding.FragmentMovieListBinding
 import com.example.moviedom.ui.adapter.MovieRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
     private var movieItemList: MutableList<MovieDetails> = ArrayList()
-    private lateinit var binding:FragmentMovieListListBinding
+    private lateinit var binding:FragmentMovieListBinding
     private var movieListAdapter: MovieRecyclerViewAdapter? = null
     private val movieViewModel : MovieListViewModel by viewModels()
 
@@ -36,9 +36,9 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_movie_list_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
 
-        binding = FragmentMovieListListBinding.inflate(layoutInflater)
+        binding = FragmentMovieListBinding.inflate(layoutInflater)
         setMovieListAdapter()
         getUpdatedMovieList()
         binding.searchMovies.addTextChangedListener (object : TextWatcher {
@@ -54,7 +54,6 @@ class MovieListFragment : Fragment() {
             }
 
         })
-
         return binding.root
     }
 
@@ -63,9 +62,13 @@ class MovieListFragment : Fragment() {
             if(it != null && it.results != null){
                 movieItemList = it.results as MutableList<MovieDetails>
                 movieListAdapter!!.setMovieItemList(movieItemList)
+                binding.listMovies.visibility = View.VISIBLE
+                binding.emptyView.visibility = View.GONE
             }
             else{
                 movieListAdapter!!.setMovieItemList(mutableListOf())
+                binding.listMovies.visibility = View.GONE
+                binding.emptyView.visibility = View.VISIBLE
             }
         })
     }
@@ -75,26 +78,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setMovieListAdapter() {
-
         movieListAdapter = MovieRecyclerViewAdapter(movieItemList)
         val layoutManager = LinearLayoutManager(requireActivity())
-        binding.list.layoutManager = layoutManager
-        binding.list.adapter = movieListAdapter
+        binding.listMovies.layoutManager = layoutManager
+        binding.listMovies.adapter = movieListAdapter
 
-    }
-
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            MovieListFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
     }
 }
