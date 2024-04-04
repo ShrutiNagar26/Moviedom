@@ -5,11 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0"
         android:layout_height="@dimen/card_view_height"
         android:elevation="@dimen/card_view_elevation"
         app:cardCornerRadius="@dimen/card_view_elevation"
-        app:strokeWidth="0dp"
+        app:strokeWidth="@dimen/dimen_0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +34,7 @@
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Image" />
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dimen_0"
                 android:layout_height="wrap_content"
                 android:autoSizeTextType="uniform"
                 android:layout_margin="@dimen/activity_vertical_margin"

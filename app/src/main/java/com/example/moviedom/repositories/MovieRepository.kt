@@ -1,7 +1,7 @@
-package com.example.moviedom.ui
+package com.example.moviedom.repositories
 
 import com.example.moviedom.data.MovieApi
-import com.example.moviedom.network.RetrofitNetwork
+import com.example.moviedom.repositories.BaseRepository
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(private val movieApi: MovieApi) : BaseRepository() {

@@ -10,12 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.moviedom.R
 import com.example.moviedom.data.MovieDetails
 import com.example.moviedom.databinding.FragmentMovieListListBinding
-import com.example.moviedom.ui.MovieRepository
-import dagger.hilt.EntryPoint
+import com.example.moviedom.ui.adapter.MovieRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -26,7 +24,7 @@ class MovieListFragment : Fragment() {
 
     private var movieItemList: MutableList<MovieDetails> = ArrayList()
     private lateinit var binding:FragmentMovieListListBinding
-    private var movieListAdapter:MovieRecyclerViewAdapter? = null
+    private var movieListAdapter: MovieRecyclerViewAdapter? = null
     private val movieViewModel : MovieListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +40,7 @@ class MovieListFragment : Fragment() {
 
         binding = FragmentMovieListListBinding.inflate(layoutInflater)
         setMovieListAdapter()
+        getUpdatedMovieList()
         binding.searchMovies.addTextChangedListener (object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -59,8 +58,8 @@ class MovieListFragment : Fragment() {
         return binding.root
     }
 
-    private fun searchMovie(searchedValue:String){
-        movieViewModel.getSearchedMovies(searchedValue).observe(viewLifecycleOwner, Observer {
+    private fun getUpdatedMovieList() {
+        movieViewModel.searchedMovieResponseList.observe(viewLifecycleOwner, Observer {
             if(it != null && it.results != null){
                 movieItemList = it.results as MutableList<MovieDetails>
                 movieListAdapter!!.setMovieItemList(movieItemList)
@@ -69,6 +68,10 @@ class MovieListFragment : Fragment() {
                 movieListAdapter!!.setMovieItemList(mutableListOf())
             }
         })
+    }
+
+    private fun searchMovie(searchedValue:String){
+        movieViewModel.getSearchedMovies(searchedValue)
     }
 
     private fun setMovieListAdapter() {

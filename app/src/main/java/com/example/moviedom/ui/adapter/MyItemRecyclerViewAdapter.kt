@@ -1,4 +1,4 @@
-package com.example.moviedom.ui.movielist
+package com.example.moviedom.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,12 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import coil.load
-import coil.size.Scale
-import coil.transform.CircleCropTransformation
 import com.example.moviedom.data.MovieDetails
-import com.example.moviedom.data.Movies
 
-import com.example.moviedom.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.moviedom.databinding.FragmentMovieListBinding
 
 /**

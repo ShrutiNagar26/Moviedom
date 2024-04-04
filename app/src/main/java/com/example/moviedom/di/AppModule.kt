@@ -1,7 +1,7 @@
 package com.example.moviedom.di
 
 import com.example.moviedom.data.MovieApi
-import com.example.moviedom.ui.MovieRepository
+import com.example.moviedom.repositories.MovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

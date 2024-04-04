@@ -3,5 +3,6 @@
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_movie">Movie</string>
     <string name="title_favourite">Favourite</string>
-    <string name="search_movies">Search your movies</string>
+    <string name="search_movies">Search your movies here</string>
+    <string name="no_movies_text">No movies to display!!</string>
 </resources>

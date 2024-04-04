@@ -1,4 +1,4 @@
-package com.example.moviedom.ui
+package com.example.moviedom.repositories
 
 import android.util.Log
 import retrofit2.Response
