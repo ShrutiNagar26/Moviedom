@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import coil.load
+import com.example.moviedom.R
 import com.example.moviedom.data.MovieDetails
 
-import com.example.moviedom.databinding.FragmentMovieListBinding
 import com.example.moviedom.databinding.FragmentMovieListItemsBinding
 
 /**
@@ -43,6 +43,7 @@ class MovieRecyclerViewAdapter(
 
         holder.posterImage.load(item.poster) {
             crossfade(true)
+            placeholder(R.drawable.no_image)
         }
     }
 
