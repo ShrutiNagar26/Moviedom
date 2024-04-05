@@ -8,4 +8,6 @@
     <dimen name="card_view_elevation">10dp</dimen>
     <dimen name="dimen_0">0dp</dimen>
     <dimen name="text_size">15sp</dimen>
+    <dimen name="min_width">120dp</dimen>
+    <dimen name="padding_50">50dp</dimen>
 </resources>

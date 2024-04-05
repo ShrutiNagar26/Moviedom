@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardMaxElevation="@dimen/card_view_elevation"
+        app:cardMaxElevation="5dp"
         app:cardPreventCornerOverlap="true"
         app:cardBackgroundColor="@color/white"
         app:cardUseCompatPadding="true">
@@ -29,6 +29,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:elevation="@dimen/card_view_elevation"
+                android:minWidth="@dimen/min_width"
+                android:minHeight="@dimen/card_view_height"
                 android:background="@drawable/no_image"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,7 @@
 package com.example.moviedom.di
 
 import com.example.moviedom.data.MovieApi
+import com.example.moviedom.other.Constants
 import com.example.moviedom.repositories.MovieRepository
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    fun provideBaseURl() = "http://www.omdbapi.com"
+    fun provideBaseURl() = Constants.BASE_URL
 
     @Provides
     @Singleton

@@ -17,7 +17,6 @@ import java.io.IOException
         return try {
             val response = service.searchMovies(
                 search = searchedTerm,
-                apiKey = "27f54060",
                 page = pageIndex
             )
 
