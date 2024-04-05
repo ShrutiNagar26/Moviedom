@@ -3,6 +3,7 @@ package com.example.moviedom.ui.movielist
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -13,7 +14,7 @@ import androidx.lifecycle.Observer
 import com.example.moviedom.R
 import com.example.moviedom.data.MovieDetails
 import com.example.moviedom.databinding.FragmentMovieListBinding
-import com.example.moviedom.ui.adapter.MovieRecyclerViewAdapter
+import com.example.moviedom.ui.adapter.MovieItemRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -22,9 +23,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MovieListFragment : Fragment() {
 
-    private var movieItemList: MutableList<MovieDetails> = ArrayList()
     private lateinit var binding:FragmentMovieListBinding
-    private var movieListAdapter: MovieRecyclerViewAdapter? = null
+    private var movieListAdapter: MovieItemRecyclerAdapter? = null
     private val movieViewModel : MovieListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,11 +36,8 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_movie_list, container, false)
-
         binding = FragmentMovieListBinding.inflate(layoutInflater)
         setMovieListAdapter()
-        getUpdatedMovieList()
         binding.searchMovies.addTextChangedListener (object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -54,31 +51,19 @@ class MovieListFragment : Fragment() {
             }
 
         })
+
         return binding.root
     }
 
-    private fun getUpdatedMovieList() {
-        movieViewModel.searchedMovieResponseList.observe(viewLifecycleOwner, Observer {
-            if(it != null && it.results != null){
-                movieItemList = it.results as MutableList<MovieDetails>
-                movieListAdapter!!.setMovieItemList(movieItemList)
-                binding.listMovies.visibility = View.VISIBLE
-                binding.emptyView.visibility = View.GONE
-            }
-            else{
-                movieListAdapter!!.setMovieItemList(mutableListOf())
-                binding.listMovies.visibility = View.GONE
-                binding.emptyView.visibility = View.VISIBLE
-            }
+    private fun searchMovie(searchedValue:String){
+        movieViewModel.getSearchedMovies(searchedValue).observe(viewLifecycleOwner, Observer {
+            Log.v("valueIT",it.toString().length.toString())
+                movieListAdapter!!.submitData(viewLifecycleOwner.lifecycle,it)
         })
     }
 
-    private fun searchMovie(searchedValue:String){
-        movieViewModel.getSearchedMovies(searchedValue)
-    }
-
     private fun setMovieListAdapter() {
-        movieListAdapter = MovieRecyclerViewAdapter(movieItemList)
+        movieListAdapter = MovieItemRecyclerAdapter()
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.listMovies.layoutManager = layoutManager
         binding.listMovies.adapter = movieListAdapter

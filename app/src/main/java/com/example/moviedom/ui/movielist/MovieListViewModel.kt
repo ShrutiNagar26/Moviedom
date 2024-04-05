@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.moviedom.data.MovieDetails
 import com.example.moviedom.data.Movies
 import com.example.moviedom.repositories.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,13 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieListViewModel @Inject constructor(private val repository: MovieRepository):ViewModel() {
 
-
-    private val searchedMovieResponse: MutableLiveData<Movies> = MutableLiveData()
-     val searchedMovieResponseList: LiveData<Movies>
-        get() = searchedMovieResponse
-    fun getSearchedMovies(searchedValue: String){
-        viewModelScope.launch(Dispatchers.IO){
-            searchedMovieResponse.postValue(repository.getSearchedResults(searchedValue))
-        }
+    fun getSearchedMovies(searchedValue: String): LiveData<PagingData<MovieDetails>> {
+        return repository.getSearchedResults(searchedValue)
+            .cachedIn(viewModelScope)
     }
 }

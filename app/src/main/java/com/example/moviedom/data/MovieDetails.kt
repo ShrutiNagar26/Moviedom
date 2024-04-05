@@ -9,5 +9,7 @@ data class MovieDetails(
     @SerializedName("Poster")
     var poster:String = "",
     @SerializedName("Year")
-    var year:String = ""
+    var year:String = "",
+    @SerializedName("imdbID")
+    var imdbID:String = ""
 )
