@@ -19,12 +19,11 @@ import java.io.IOException
                 search = searchedTerm,
                 page = pageIndex
             )
-
             // Need to check if results are not null to avoid crash
-            if (response.results != null) {
-                 feedsDetails = response.results
-            }else{
-                feedsDetails = emptyList()
+            if(response.results != null){
+                feedsDetails = response.results
+            }else {
+                feedsDetails =emptyList()
             }
 
             //Update next key only if response is not empty
@@ -36,7 +35,7 @@ import java.io.IOException
             LoadResult.Page(
                 data = feedsDetails,
                 prevKey = if (pageIndex == 1) null else (pageIndex - 1),
-                nextKey = nextKey
+                nextKey = if (feedsDetails.isEmpty()) null else (pageIndex + 1)
             )
         } catch (exception: IOException) {
             return LoadResult.Error(exception)

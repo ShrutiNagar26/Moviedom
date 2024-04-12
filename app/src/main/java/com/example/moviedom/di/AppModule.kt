@@ -33,15 +33,17 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(baseUrl: String): Retrofit= Retrofit.Builder()
-    .baseUrl(baseUrl)
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
+    fun provideRetrofit(okHttp: OkHttpClient, baseUrl: String): Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .client(okHttp)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     @Provides
     @Singleton
     fun getMovieAPI(retrofit: Retrofit):MovieApi = retrofit.create(MovieApi::class.java)
 
     @Provides
+    @Singleton
     fun provideRepository(movieApI:MovieApi) = MovieRepository(movieApI)
 }

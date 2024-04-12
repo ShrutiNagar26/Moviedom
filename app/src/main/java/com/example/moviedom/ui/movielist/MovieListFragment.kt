@@ -57,7 +57,6 @@ class MovieListFragment : Fragment() {
 
     private fun searchMovie(searchedValue:String){
         movieViewModel.getSearchedMovies(searchedValue).observe(viewLifecycleOwner, Observer {
-            Log.v("valueIT",it.toString().length.toString())
                 movieListAdapter!!.submitData(viewLifecycleOwner.lifecycle,it)
         })
     }
