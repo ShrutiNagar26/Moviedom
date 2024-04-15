@@ -1,4 +1,4 @@
-package com.example.moviedom.network
+package com.example.moviedom.data.network
 
 sealed class Result <out T: Any> {
     data class Success<out T : Any>(val data: T) : Result<T>()

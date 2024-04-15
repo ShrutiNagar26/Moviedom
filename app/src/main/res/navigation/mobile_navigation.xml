@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_movie_list"
-        android:name="com.example.moviedom.ui.movielist.MovieListFragment"
+        android:name="com.example.moviedom.presentation.ui.movielist.MovieListFragment"
         android:label="@string/title_movie"
         tools:layout="@layout/fragment_movie_list_items" />
 

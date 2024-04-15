@@ -4,6 +4,7 @@ package com.example.moviedom.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.moviedom.data.model.MovieDetails
 import retrofit2.HttpException
 import java.io.IOException
 

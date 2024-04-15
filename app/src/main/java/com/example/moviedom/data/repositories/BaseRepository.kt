@@ -1,13 +1,13 @@
-package com.example.moviedom.repositories
+package com.example.moviedom.data.repositories
 
 import android.util.Log
 import retrofit2.Response
 import java.io.IOException
 import java.net.SocketTimeoutException
-import com.example.moviedom.network.Result
+import com.example.moviedom.data.network.Result
 // This class is to be used for future API calls where no paging is used.
 open class BaseRepository {
-    private suspend fun <T: Any> safeAPIResult(call: suspend ()-> Response<T>, errorMessage: String) : Result<T>{
+    private suspend fun <T: Any> safeAPIResult(call: suspend ()-> Response<T>, errorMessage: String) : Result<T> {
         return try {
             val response = call.invoke()
             if (response.isSuccessful) {

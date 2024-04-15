@@ -1,12 +1,9 @@
-package com.example.moviedom
+package com.example.moviedom.presentation.ui
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import com.example.moviedom.R
 import com.example.moviedom.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

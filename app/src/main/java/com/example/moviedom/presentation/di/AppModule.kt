@@ -1,8 +1,8 @@
-package com.example.moviedom.di
+package com.example.moviedom.presentation.di
 
 import com.example.moviedom.data.MovieApi
-import com.example.moviedom.other.Constants
-import com.example.moviedom.repositories.MovieRepository
+import com.example.moviedom.presentation.other.Constants
+import com.example.moviedom.data.repositories.MovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.example.moviedom.other
+package com.example.moviedom.presentation.other
 
 object Constants {
     const val BASE_URL ="http://www.omdbapi.com"

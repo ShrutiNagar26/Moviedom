@@ -1,9 +1,8 @@
-package com.example.moviedom.ui.movielist
+package com.example.moviedom.presentation.ui.movielist
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -11,10 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.moviedom.R
-import com.example.moviedom.data.MovieDetails
 import com.example.moviedom.databinding.FragmentMovieListBinding
-import com.example.moviedom.ui.adapter.MovieItemRecyclerAdapter
+import com.example.moviedom.presentation.ui.adapter.MovieItemRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

@@ -1,4 +1,4 @@
-package com.example.moviedom.ui.adapter
+package com.example.moviedom.presentation.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.moviedom.R
-import com.example.moviedom.data.MovieDetails
+import com.example.moviedom.data.model.MovieDetails
 import com.example.moviedom.databinding.FragmentMovieListItemsBinding
 
 class MovieItemRecyclerAdapter:

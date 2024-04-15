@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Moviedom"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="true"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|uiMode">
             <intent-filter>
