@@ -12,6 +12,7 @@ import coil.load
 import com.example.moviedom.R
 import com.example.moviedom.data.model.MovieItemDetails
 import com.example.moviedom.databinding.FragmentMovieDetailsBinding
+import com.example.moviedom.presentation.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,11 +30,14 @@ class MovieDetailsFragment : Fragment() {
         detailsBinding = FragmentMovieDetailsBinding.inflate(layoutInflater)
         viewModel.movieItem.observe(viewLifecycleOwner, Observer {
             if(it != null) {
+                (activity as MainActivity).setToolBarTitle(it.title)
                 updateDetailsUI(it)
             }
         })
+
         return detailsBinding.root
     }
+
 
     private fun updateDetailsUI(movieDetails: MovieItemDetails) {
         detailsBinding.titleMovie.text = movieDetails.title
@@ -41,6 +45,7 @@ class MovieDetailsFragment : Fragment() {
         detailsBinding.imageMovies.load(movieDetails.moviePoster)
         detailsBinding.ratingProgress.progress = (movieDetails.imdbRating.toFloat() * 10.0).toInt()
         detailsBinding.ratingText.text = movieDetails.imdbRating
+
     }
 
 

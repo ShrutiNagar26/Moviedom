@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.moviedom.R
 import com.example.moviedom.databinding.FragmentMovieListBinding
 import com.example.moviedom.presentation.other.OnClickListener
+import com.example.moviedom.presentation.ui.MainActivity
 import com.example.moviedom.presentation.ui.adapter.MovieItemRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,6 +39,7 @@ class MovieListFragment : Fragment(),OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMovieListBinding.inflate(layoutInflater)
+
         setMovieListAdapter()
         binding.searchMovies.addTextChangedListener (object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -54,6 +56,17 @@ class MovieListFragment : Fragment(),OnClickListener {
         })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setToolBarTitle()
+    }
+
+    private fun setToolBarTitle() {
+        if((activity as MainActivity).actionBar != null) {
+            (activity as MainActivity).setToolBarTitle("Search Movies")
+        }
     }
 
     private fun searchMovie(searchedValue:String){
