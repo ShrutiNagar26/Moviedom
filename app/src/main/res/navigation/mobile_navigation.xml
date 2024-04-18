@@ -9,6 +9,23 @@
         android:id="@+id/navigation_movie_list"
         android:name="com.example.moviedom.presentation.ui.movielist.MovieListFragment"
         android:label="@string/title_movie"
-        tools:layout="@layout/fragment_movie_list_items" />
+        tools:layout="@layout/fragment_movie_list_items" >
+        <action
+            android:id="@+id/action_navigation_movie_list_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.example.moviedom.presentation.ui.moviedetails.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" >
+
+        <argument
+            android:name="movieId"
+            app:argType="string" />
+        <argument
+            android:name="poster"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

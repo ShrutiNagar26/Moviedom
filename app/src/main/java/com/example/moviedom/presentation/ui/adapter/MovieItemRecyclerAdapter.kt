@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,12 @@ import coil.load
 import com.example.moviedom.R
 import com.example.moviedom.data.model.MovieDetails
 import com.example.moviedom.databinding.FragmentMovieListItemsBinding
+import com.example.moviedom.presentation.other.OnClickListener
 
 class MovieItemRecyclerAdapter:
     PagingDataAdapter<MovieDetails, MovieItemRecyclerAdapter.ViewHolder>(diffCallback) {
 
+        private lateinit var clickListener:OnClickListener
     companion object {
         private val diffCallback = object : DiffUtil.ItemCallback<MovieDetails>() {
             override fun areItemsTheSame(oldItem: MovieDetails, newItem: MovieDetails): Boolean =
@@ -35,10 +38,10 @@ class MovieItemRecyclerAdapter:
         )
 
     }
-//    fun setMovieItemList(scanList: List<MovieDetails>) {
-//        values = scanList as MutableList<MovieDetails>
-//        notifyDataSetChanged()
-//    }
+
+    fun setListener(listener:OnClickListener){
+        this.clickListener = listener
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -50,7 +53,12 @@ class MovieItemRecyclerAdapter:
                 crossfade(true)
                 placeholder(R.drawable.no_image)
             }
+
+            holder.movieView.setOnClickListener{
+clickListener.onClickListener(item.poster,item.imdbID)
+            }
         }
+
 
     }
 
@@ -59,6 +67,7 @@ class MovieItemRecyclerAdapter:
         val movieTitle: TextView = binding.title
         val releaseYear: TextView = binding.release
         val posterImage: ImageView = binding.moviePoster
+        val movieView: CardView = binding.movieCardView
 
     }
 }

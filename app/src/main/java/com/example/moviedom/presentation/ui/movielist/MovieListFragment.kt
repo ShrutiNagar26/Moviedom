@@ -8,9 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.example.moviedom.R
 import com.example.moviedom.databinding.FragmentMovieListBinding
+import com.example.moviedom.presentation.other.OnClickListener
 import com.example.moviedom.presentation.ui.adapter.MovieItemRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * A fragment representing a list of Items.
  */
 @AndroidEntryPoint
-class MovieListFragment : Fragment() {
+class MovieListFragment : Fragment(),OnClickListener {
 
     private lateinit var binding:FragmentMovieListBinding
     private var movieListAdapter: MovieItemRecyclerAdapter? = null
@@ -63,6 +67,11 @@ class MovieListFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.listMovies.layoutManager = layoutManager
         binding.listMovies.adapter = movieListAdapter
+        movieListAdapter!!.setListener(this)
+    }
 
+    override fun onClickListener(poster: String, imdbID: String) {
+        val action = MovieListFragmentDirections.actionNavigationMovieListToMovieDetailsFragment(imdbID,poster)
+       findNavController().navigate(action)
     }
 }
