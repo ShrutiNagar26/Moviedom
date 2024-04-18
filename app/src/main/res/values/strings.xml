@@ -5,4 +5,6 @@
     <string name="title_favourite">Favourite</string>
     <string name="search_movies">Search your movies here</string>
     <string name="no_movies_text">No movies to display!!</string>
+    <string name="plot_Text">Plot</string>
+    <string name="director_Text">No movies to display!!</string>
 </resources>

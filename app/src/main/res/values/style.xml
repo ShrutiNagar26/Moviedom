@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StyleTextViewNormalBold" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/myriad_pro_bold</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="StyleTextViewNormalRegular" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/myriad_pro_regular</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+</resources>
