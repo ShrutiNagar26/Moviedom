@@ -1,6 +1,5 @@
 package com.example.moviedom.presentation.ui.moviedetails
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import coil.load
-import com.example.moviedom.R
 import com.example.moviedom.data.model.MovieItemDetails
 import com.example.moviedom.databinding.FragmentMovieDetailsBinding
 import com.example.moviedom.presentation.ui.MainActivity
+import com.example.moviedom.presentation.ui.viewmodels.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

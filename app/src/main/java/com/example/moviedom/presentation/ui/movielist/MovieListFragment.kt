@@ -8,15 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.moviedom.R
 import com.example.moviedom.databinding.FragmentMovieListBinding
 import com.example.moviedom.presentation.other.OnClickListener
 import com.example.moviedom.presentation.ui.MainActivity
 import com.example.moviedom.presentation.ui.adapter.MovieItemRecyclerAdapter
+import com.example.moviedom.presentation.ui.viewmodels.MovieListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

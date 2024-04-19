@@ -1,4 +1,4 @@
-package com.example.moviedom.presentation.ui.moviedetails
+package com.example.moviedom.presentation.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
