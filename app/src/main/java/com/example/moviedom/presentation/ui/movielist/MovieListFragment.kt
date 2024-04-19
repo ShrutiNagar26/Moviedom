@@ -65,6 +65,7 @@ class MovieListFragment : Fragment(),OnClickListener {
 
     private fun setToolBarTitle() {
         if((activity as MainActivity).actionBar != null) {
+            (activity as MainActivity).fa = View.GONE
             (activity as MainActivity).setToolBarTitle("Search Movies")
         }
     }
